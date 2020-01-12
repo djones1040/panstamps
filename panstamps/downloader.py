@@ -137,6 +137,7 @@ class downloader():
             self.log.error(message)
             raise IOError(message)
 
+        content = content.decode('utf-8')		
         # CHECK WE ARE IN THE PS1 FOOTPRINT
         if "No PS1 3PI images were found" in content:
             self.log.warning(
@@ -301,7 +302,7 @@ class downloader():
         except requests.exceptions.RequestException:
             print('HTTP Request failed')
 
-        print response.url
+        print(response.url)
 
         self.log.debug('completed the ``get_html_content`` method')
         return response.content, response.status_code, response.url
@@ -502,11 +503,11 @@ class downloader():
             if window:
                 window = abs(self.window)
                 if mjdDiff > window:
-                    print "No warp image was found within %(window)s sec after requested MJD" % locals()
+                    print("No warp image was found within %(window)s sec after requested MJD" % locals())
                     allWarps["jpegs"] = []
                     allWarps["fits"] = []
                     allWarps["filenames"] = []
-            print "The closest selected warp was taken %(mjdDiff)0.1f sec after the requested MJD" % locals()
+            print("The closest selected warp was taken %(mjdDiff)0.1f sec after the requested MJD" % locals())
         elif self.mjdEnd:
             closestMjd = 0.
             for i in warpJpegUrls:
@@ -534,11 +535,11 @@ class downloader():
             if window:
                 window = abs(self.window)
                 if mjdDiff > window:
-                    print "No warp image was found within %(window)s sec before requested MJD" % locals()
+                    print("No warp image was found within %(window)s sec before requested MJD" % locals())
                     allWarps["jpegs"] = []
                     allWarps["fits"] = []
                     allWarps["filenames"] = []
-            print "The closest selected warp was taken %(mjdDiff)0.1f sec before the requested MJD" % locals()
+            print("The closest selected warp was taken %(mjdDiff)0.1f sec before the requested MJD" % locals())
 
         # USE REGEX TO FIND COLOR IMAGE METADATA
         if len(colorJpegUrl):

@@ -1,5 +1,5 @@
-from __version__ import __version__
-import utKit
-import cl_utils
-from downloader import downloader
-from image import image
+from panstamps.__version__ import __version__
+from panstamps import utKit
+from panstamps import cl_utils
+from panstamps.downloader import downloader
+from panstamps.image import image
