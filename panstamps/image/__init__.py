@@ -1,1 +1,1 @@
-from image import image
+from panstamps.image import image
